@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.entity.UserMapper">
+
+  <select id="countByUsername" resultType="java.lang.Integer">
+      SELECT count(1) FROM t_file WHERE filename = #{filename}
+  </select>
+    <select id="findByFilename" resultType="java.util.List">
+      SELECT * FROM t_file WHERE filename = #{filename}
+  </select>
+    <insert id="insertFile">
+      INSERT INTO t_file (`filename`,`filecode`) VALUES (#{filename},#{filecode})
+  	</insert>
+</mapper>
