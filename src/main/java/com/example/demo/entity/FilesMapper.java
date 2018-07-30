@@ -25,6 +25,8 @@ public interface FilesMapper extends BaseMapper<Files> {
     int countByUsername(String filename);
     
 	List<Files> findByFilename(String filename);
+	Files findByFileid(Long fileid);
+	List<Files> listAllFiles();
 	
 	int insertFile(String filename,String filecode);
 }

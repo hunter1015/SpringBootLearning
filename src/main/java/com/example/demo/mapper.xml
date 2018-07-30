@@ -3,12 +3,32 @@
 <mapper namespace="com.example.demo.entity.UserMapper">
 
   <select id="countByUsername" resultType="java.lang.Integer">
+      SELECT count(1) FROM t_user WHERE filename = #{username}
+  </select>
+    <select id="findByUsername" resultType="java.util.List">
+      SELECT * FROM t_user WHERE username = #{username}
+  </select>
+    <insert id="insertUser">
+      INSERT INTO t_user (`username`,`password`) VALUES (#{username},#{password})
+  	</insert>
+</mapper>
+
+<mapper namespace="com.example.demo.entity.FilesMapper">
+
+  <select id="countByUsername" resultType="java.lang.Integer">
       SELECT count(1) FROM t_file WHERE filename = #{filename}
   </select>
     <select id="findByFilename" resultType="java.util.List">
       SELECT * FROM t_file WHERE filename = #{filename}
   </select>
+  
+      <select id="findByFileid" resultType="com.example.demo.entity.Files">
+      SELECT * FROM t_file WHERE id = #{fileid}
+  </select>
     <insert id="insertFile">
       INSERT INTO t_file (`filename`,`filecode`) VALUES (#{filename},#{filecode})
   	</insert>
+    <select id="listAllFiles" resultType="java.util.List">
+    SELECT * FROM t_file
+    </select>
 </mapper>
