@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -14,6 +15,7 @@ import tk.mybatis.mapper.common.BaseMapper;
  * @author Levin
  * @since 2018/5/10 0007
  */
+@Mapper
 public interface FilesMapper extends BaseMapper<Files> {
 
     /**
@@ -23,10 +25,8 @@ public interface FilesMapper extends BaseMapper<Files> {
      * @return 统计结果
      */
     int countByUsername(String filename);
-    
 	List<Files> findByFilename(String filename);
 	Files findByFileid(Long fileid);
 	List<Files> listAllFiles();
-	
 	int insertFile(String filename,String filecode);
 }

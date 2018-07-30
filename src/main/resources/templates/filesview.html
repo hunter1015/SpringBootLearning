@@ -6,19 +6,16 @@
 </head>
 <body>
     <div th:replace="fragments/header :: header">...</div>
-    <h3 th:text="${userModel.title}">Welcome to springboot</h3>
-    <form action="/users" th:action="@{/users}" method="post" th:object="${userModel.user}" >
-        <input type="hidden" name="id" th:value="${userModel.user.id}">
+    <h3 th:text="${filesModel.title}">Welcome to springboot</h3>
+    <form action="/files" th:action="@{/files}" method="post" th:object="${filesModel.files}" >
+        <input type="hidden" name="id" th:value="${filesModel.files.id}">
         名称：<br>
-        <input type="text" name="name" th:value="*{name}">
+        <input type="text" name="name" th:value="*{filesname}">
         <br>
         年龄：<br>
-        <input type="text" name="age" th:value="*{age}">
+        <input type="text" name="age" th:value="*{filescode}">
         <input type="submit" value="提交">
     </form>
-
-
-
     <div th:replace="~{fragments/footer :: footer}">...</div>
 
 </body>
