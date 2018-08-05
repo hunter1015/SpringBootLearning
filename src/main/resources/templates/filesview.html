@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" >
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >-->
+<!--<html xmlns:th="http://www.thymeleaf.org"-->
+      <!--xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">-->
 <head>
     <meta charset="UTF-8">
-    <title>welcome</title>
+    <title>文件列表</title>
 </head>
 <body>
-    <div th:replace="fragments/header :: header">...</div>
+    <div th:replace="common/header :: header"></div>
     <h3 th:text="${filesModel.title}">Welcome to springboot</h3>
-    <form action="/files" th:action="@{/files}" method="post" th:object="${filesModel.files}" >
-        <input type="hidden" name="id" th:value="${filesModel.files.id}">
-        名称：<br>
-        <input type="text" name="name" th:value="*{filesname}">
-        <br>
-        年龄：<br>
-        <input type="text" name="age" th:value="*{filescode}">
-        <input type="submit" value="提交">
-    </form>
-    <div th:replace="~{fragments/footer :: footer}">...</div>
+    <div>
+        <a th:href="@{/files/filesform}" >创建文件</a>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>文件名</td>
+                <td>文件标识码</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${filesModel.files} eq null">
+                <td colspan="3">没有文件信息！！</td>
+            </tr>
+            <tr th:each="file : ${filesModel.files}">
+                <td th:text="${file.filename}">默认文件名</td>
+                <td th:text="${file.filecode}">默认文件code</td>
+            </tr>
+        </tbody>
 
+    </table>
+    <div th:replace="~{common/footer :: footer}"></div>
 </body>
 </html>

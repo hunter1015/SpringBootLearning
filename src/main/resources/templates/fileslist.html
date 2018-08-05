@@ -8,7 +8,7 @@
     <title>文件列表</title>
 </head>
 <body>
-    <div th:replace="fragments/header :: header">...</div>
+    <div th:replace="common/header :: header"></div>
     <h3 th:text="${filesModel.title}">Welcome to springboot</h3>
     <div>
         <a th:href="@{/files/filesform}" >创建文件</a>
@@ -21,20 +21,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:if="${filesModel.filesList.size()} eq 0">
+            <tr th:if="${filesModel.allFileList.size()} eq 0">
                 <td colspan="3">没有文件信息！！</td>
             </tr>
-            <tr th:each="file : ${filesModel.filesList}">
-                <td th:text="${file.filename}">默认文件名</td>
-                <td th:text="${file.filecode}">默认文件code</td>
-                <td>
-                    <a href="view.html" th:href="@{'/files/' + ${file.id}}"
+            <tr th:each="file : ${filesModel.allFileList}">
+                	<td><a href="filesview.html" th:href="@{'/files/filesid/' + ${file.id}}"
+                       th:text="${file.id}">默认ID</a></td>
+    				<td><a href="filesview.html" th:href="@{'/files/filesname/' + ${file.filename}}"
                        th:text="${file.filename}">默认文件名</a></td>
+                     <td th:text="${file.filecode}">默认文件code</td>
+                     <td >下载</td>
+            
             </tr>
         </tbody>
 
     </table>
-
-    <div th:replace="~{fragments/footer :: footer}">...</div>
+    <div th:replace="~{common/footer :: footer}"></div>
 </body>
 </html>

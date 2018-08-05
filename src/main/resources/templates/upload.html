@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>上传文件</title>
+</head>
+<body>
+
+	<h1>Spring Boot文件上传示例</h1>
+
+	<form method="POST" action="/files/upload"
+		enctype="multipart/form-data">
+		<input type="file" name="file" /><br />
+		<br /> <input type="submit" value="提交" />
+	</form>
+
+</body>
+</html>

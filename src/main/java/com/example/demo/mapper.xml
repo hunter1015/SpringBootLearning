@@ -16,13 +16,13 @@
   <select id="countByFilename" resultType="java.lang.Integer">
       SELECT count(1) FROM t_file WHERE filename = #{filename}
   </select>
-   <select id="findByFilename" resultType="java.util.List">
+   <select id="findByFilename" resultType="com.example.demo.entity.Files">
       SELECT * FROM t_file WHERE filename = #{filename}
   </select>
   <select id="findByFileid" resultType="com.example.demo.entity.Files">
       SELECT * FROM t_file WHERE id = #{fileid}
   </select>
-      <select id="listAllFiles" resultType="java.util.List">
+      <select id="listAllFiles" resultType="com.example.demo.entity.Files">
     SELECT * FROM t_file
     </select>
     <insert id="insertFile">

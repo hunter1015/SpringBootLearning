@@ -5,19 +5,16 @@
     <title>welcome</title>
 </head>
 <body>
-    <div th:replace="fragments/header :: header">...</div>
     <h3 th:text="${filesModel.title}">Welcome to springboot</h3>
     <form action="/files" th:action="@{/files}" method="post" th:object="${filesModel.files}" >
-        <input type="text" name="name" th:value="*{filename}">
+         文件名：<br>
+        <input type="text" name="filename" th:value="*{filename}">
         <br>
-        年龄：<br>
-        <input type="text" name="age" th:value="*{filecode}">
+        文件编码：<br>
+        <input type="text" name="filecode" th:value="*{filecode}">
         <input type="submit" value="提交">
     </form>
 
-
-
-    <div th:replace="~{fragments/footer :: footer}">...</div>
 
 </body>
 </html>
